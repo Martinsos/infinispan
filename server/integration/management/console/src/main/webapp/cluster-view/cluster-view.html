@@ -1,1 +1,117 @@
-Clusters: {{clusters || 'No data'}}
+<!-- MAIN START -->
+<div class="container-fluid" style="margin:20px">
+
+  <!-- TOP ROW #1 START -->
+  <div class="row">
+    <div class="col-md-2 text-center">
+      <h2 style="margin:0px; padding:0px;">
+        <select class="no-border" style="text-decoration:underline;">
+          <option value="0">Cluster A</option>
+          <option value="1">Cluster B</option>
+          <option value="2">Cluster C</option>
+        </select>
+      </h2>
+    </div>
+    <div class="col-md-2 text-center">
+      <span class="bigger-font"> 50 </span> <span class="smaller-font"> Nodes</span>
+    </div>
+    <div class="col-md-3 text-center">
+      <a class="bigger-font link-jobs">3</a> <span class="smaller-font"> current map/reduce jobs</span>
+    </div>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-3 text-center">
+      <div>
+        <select>
+          <option value="0">Actions</option>
+          <option value="1">Configure clusters</option>
+          <option value="2">Create node</option>
+          <option value="3">Create cache</option>
+          <option value="4">View map/reduce jobs</option>
+          <option value="5">View merge/split history</option>
+          <option value="6">Shut down cluster</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <!-- TOP ROW #1 END -->
+
+  <!-- TOP ROW #2 START -->
+  <div class="row">
+    <div class="col-md-2 text-center">
+      <h4 style="color:   #009A31;">Available</h4>
+    </div>
+    <div class="col-md-2 text-center">
+      <span class="bigger-font"> 7 </span> <span class="smaller-font"> Caches</span>
+    </div>
+    <div class="col-md-3 text-center">
+      <a class="bigger-font link-jobs">15</a> <span class="smaller-font"> complete map/reduce jobs</span>
+    </div>
+    <div class="col-md-5">
+    </div>
+  </div>
+  <!-- TOP ROW #2 END -->
+
+  <div class="row stretch" style="margin-top:20px;">
+
+    <!-- LEFT COLUMN START -->
+    <div class="col-md-2 borders stretch-full" style="background-color:#F0F0F0;">
+      <div class="row" style="padding:10px;">
+        <div class="col-md-12">
+          <span style="font-size:16px; font-weight: bold;"> Caches</span> <br>
+          <input type="checkbox" value="checkbox" name="caches"> Employee data<br>
+          <input type="checkbox" value="checkbox" name="caches"> Payroll<br>
+          <input type="checkbox" value="checkbox" name="caches"> Benefits<br> <br>
+
+          <span class="slider-text"> Average read time </span> <br>
+          <div class="slider-one"></div>
+          <span class="slider-min"> 100 </span> <span class="slider-max"> 200 </span> <br> <br>
+
+          <span class="slider-text"> Average read time </span> <br>
+          <div class="slider-one"></div>
+          <span class="slider-min"> 100 </span> <span class="slider-max"> 200 </span> <br> <br>
+
+          <span class="slider-text"> Average read time </span> <br>
+          <div class="slider-one"></div>
+          <span class="slider-min"> 100 </span> <span class="slider-max"> 200 </span> <br> <br>
+
+        </div>
+      </div>
+    </div>
+    <!-- LEFT COLUMN END -->
+
+    <!-- RIGHT COLUMN START -->
+    <div class="col-md-10 borders-top-only" >
+
+      <!-- RIGHT COLUMN ROW #1 START -->
+      <div class="row">
+        <div class="col-md-12" style="padding-top:20px; padding-bottom:20px;">
+          <input type="search" class="search-field">
+          <div style="float:left;">
+            <span style="font-size:18px;" class="glyphicon glyphicon-th-large header-links-container"><a class="header-links"> Nodes </a></span>
+            <span style="font-size:18px;" class="glyphicon glyphicon-tasks header-links-container"><a class="header-links"> Caches </a></span>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT COLUMN ROW #1 END -->
+
+      <!-- RIGHT COLUMN ROW #2 START -->
+      <div class="row" style="padding-left:15px !important; margin: 0px important!;">
+        <div class="col-md-2 nopadding">
+          <a class="box text-center">
+            Middleware SoutA_43: <br>
+            Node_a3g4 <br><br>
+            3 caches <br>
+            35 writes/ms <br>
+          </a>
+        </div>
+      </div>
+      <!-- RIGHT COLUMN ROW #2 END -->
+
+    </div>
+    <!-- RIGHT COLUMN END -->
+
+  </div>
+
+</div>
+<!-- MAIN END -->
