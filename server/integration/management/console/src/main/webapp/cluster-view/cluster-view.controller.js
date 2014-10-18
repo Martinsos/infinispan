@@ -5,10 +5,13 @@ angular.module('managementConsole')
     '$scope',
     'api',
     function ($scope, api) {
+      $scope.shared = {
+        currentCollection: 'nodes'
+      };
+
       api.getClusters(function(clusters) {
         $scope.$apply(function() {
           $scope.clusters = clusters;
         });
       });
-      $scope.helloMsg = 'Cluster view';
   }]);

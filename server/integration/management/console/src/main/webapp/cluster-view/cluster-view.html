@@ -58,10 +58,18 @@
     <div class="col-md-2 borders stretch-full" style="background-color:#F0F0F0;">
       <div class="row" style="padding:10px;">
         <div class="col-md-12">
-          <span style="font-size:16px; font-weight: bold;"> Caches</span> <br>
-          <input type="checkbox" value="checkbox" name="caches"> Employee data<br>
-          <input type="checkbox" value="checkbox" name="caches"> Payroll<br>
-          <input type="checkbox" value="checkbox" name="caches"> Benefits<br> <br>
+          <div ng-show="shared.currentCollection == 'nodes'">
+            <span style="font-size:16px; font-weight: bold;"> Caches</span> <br>
+            <input type="checkbox" value="checkbox" name="caches"> Employee data<br>
+            <input type="checkbox" value="checkbox" name="caches"> Payroll<br>
+            <input type="checkbox" value="checkbox" name="caches"> Benefits<br> <br>
+          </div>
+          <div ng-show="shared.currentCollection == 'caches'">
+            <span style="font-size:16px; font-weight: bold;"> Servers</span> <br>
+            <input type="checkbox" value="checkbox" name="caches"> Server Name 1<br>
+            <input type="checkbox" value="checkbox" name="caches"> Server Name 2<br>
+            <input type="checkbox" value="checkbox" name="caches"> Server Name 3<br> <br>
+          </div>
 
           <span class="slider-text"> Average read time </span> <br>
           <div class="slider-one"></div>
@@ -88,8 +96,12 @@
         <div class="col-md-12" style="padding-top:20px; padding-bottom:20px;">
           <input type="search" class="search-field">
           <div style="float:left;">
-            <span style="font-size:18px;" class="glyphicon glyphicon-th-large header-links-container"><a class="header-links"> Nodes </a></span>
-            <span style="font-size:18px;" class="glyphicon glyphicon-tasks header-links-container"><a class="header-links"> Caches </a></span>
+            <span style="font-size:18px;" class="glyphicon glyphicon-th-large header-links-container">
+              <a class="header-links" ng-click="shared.currentCollection = 'nodes'"> Nodes </a>
+            </span>
+            <span style="font-size:18px;" class="glyphicon glyphicon-tasks header-links-container">
+              <a class="header-links" ng-click="shared.currentCollection = 'caches'"> Caches </a>
+            </span>
           </div>
         </div>
       </div>
@@ -97,10 +109,19 @@
 
       <!-- RIGHT COLUMN ROW #2 START -->
       <div class="row" style="padding-left:15px !important; margin: 0px important!;">
-        <div class="col-md-2 nopadding">
-          <a class="box text-center">
+        <div class="col-md-2 nopadding" ng-show="shared.currentCollection == 'nodes'">
+          <a class="box text-center" ui-sref="nodeDetails">
             Middleware SoutA_43: <br>
             Node_a3g4 <br><br>
+            3 caches <br>
+            35 writes/ms <br>
+          </a>
+        </div>
+
+        <div class="col-md-2 nopadding" ng-show="shared.currentCollection == 'caches'">
+          <a class="box" ui-sref="nodeDetails">
+            <span style="font-size:16px">Employee Data</span> <br>
+            <br>
             3 caches <br>
             35 writes/ms <br>
           </a>
