@@ -33,7 +33,9 @@ angular.module('managementConsole.api')
           if (http.readyState == 4 && http.status == 200) {
             var response = JSON.parse(http.responseText);
             if (response.outcome == 'success') {
-              callback(response.result);
+              if (callback) {
+                callback(response.result);
+              }
             } else {
               alert(response);
             }

@@ -18,6 +18,11 @@ angular.module('managementConsole', [
         templateUrl: 'webapp/node-details/node-details.html',
         controller: 'NodeDetailsCtrl'
       })
+      .state('cacheDetails', {
+        url: '/cache-details',
+        templateUrl: 'webapp/cache-details/cache-details.html',
+        controller: 'CacheDetailsCtrl'
+      })
       .state('error404', {
         url: '/error404',
         templateUrl: 'webapp/error404/error404.html',

@@ -24,7 +24,9 @@ angular.module('managementConsole.api')
         this.modelController.readResource(this.getResourcePath(), false, true, (function(response) {
           this.data = response;
           this.lastRefresh = new Date();
-          callback(this);
+          if (callback) {
+            callback(this);
+          }
         }).bind(this));
       };
 

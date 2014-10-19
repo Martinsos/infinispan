@@ -5,18 +5,16 @@
   <div class="row">
     <div class="col-md-2 text-center">
       <h2 style="margin:0px; padding:0px;">
-        <select class="no-border" style="text-decoration:underline;">
-          <option value="0">Cluster A</option>
-          <option value="1">Cluster B</option>
-          <option value="2">Cluster C</option>
+        <select class="no-border" style="text-decoration:underline;"
+        ng-model="currentCluster" ng-options="cluster.name for cluster in clusters">
         </select>
       </h2>
     </div>
     <div class="col-md-2 text-center">
-      <span class="bigger-font"> 50 </span> <span class="smaller-font"> Nodes</span>
+      <span class="bigger-font"> ? </span> <span class="smaller-font"> Nodes</span>
     </div>
     <div class="col-md-3 text-center">
-      <a class="bigger-font link-jobs">3</a> <span class="smaller-font"> current map/reduce jobs</span>
+      <a class="bigger-font link-jobs">?</a> <span class="smaller-font"> current map/reduce jobs</span>
     </div>
     <div class="col-md-2">
     </div>
@@ -42,10 +40,10 @@
       <h4 style="color:   #009A31;">Available</h4>
     </div>
     <div class="col-md-2 text-center">
-      <span class="bigger-font"> 7 </span> <span class="smaller-font"> Caches</span>
+      <span class="bigger-font"> {{currentCluster.caches.length}} </span> <span class="smaller-font"> Caches</span>
     </div>
     <div class="col-md-3 text-center">
-      <a class="bigger-font link-jobs">15</a> <span class="smaller-font"> complete map/reduce jobs</span>
+      <a class="bigger-font link-jobs">?</a> <span class="smaller-font"> complete map/reduce jobs</span>
     </div>
     <div class="col-md-5">
     </div>
@@ -60,17 +58,18 @@
         <div class="col-md-12">
           <div ng-show="shared.currentCollection == 'nodes'">
             <span style="font-size:16px; font-weight: bold;"> Caches</span> <br>
-            <input type="checkbox" value="checkbox" name="caches"> Employee data<br>
-            <input type="checkbox" value="checkbox" name="caches"> Payroll<br>
-            <input type="checkbox" value="checkbox" name="caches"> Benefits<br> <br>
+            <div ng-repeat="cache in currentCluster.caches | limitTo: 3">
+              <input type="checkbox" value="checkbox" name="caches"> {{cache.name}} <br>
+            </div>
           </div>
           <div ng-show="shared.currentCollection == 'caches'">
             <span style="font-size:16px; font-weight: bold;"> Servers</span> <br>
             <input type="checkbox" value="checkbox" name="caches"> Server Name 1<br>
             <input type="checkbox" value="checkbox" name="caches"> Server Name 2<br>
-            <input type="checkbox" value="checkbox" name="caches"> Server Name 3<br> <br>
+            <input type="checkbox" value="checkbox" name="caches"> Server Name 3<br>
           </div>
 
+          <br>
           <span class="slider-text"> Average read time </span> <br>
           <div class="slider-one"></div>
           <span class="slider-min"> 100 </span> <span class="slider-max"> 200 </span> <br> <br>
@@ -109,22 +108,28 @@
 
       <!-- RIGHT COLUMN ROW #2 START -->
       <div class="row" style="padding-left:15px !important; margin: 0px important!;">
-        <div class="col-md-2 nopadding" ng-show="shared.currentCollection == 'nodes'">
-          <a class="box text-center" ui-sref="nodeDetails">
-            Middleware SoutA_43: <br>
-            Node_a3g4 <br><br>
-            3 caches <br>
-            35 writes/ms <br>
-          </a>
+        <div ng-show="shared.currentCollection == 'nodes'">
+          <div ng-show="!currentCluster.nodes || currentCluster.nodes.length === 0">There are no nodes to show.</div>
+          <div class="col-md-2 nopadding" ng-repeat="node in currentCluster.nodes">
+            <a class="box text-center" ui-sref="nodeDetails">
+              Middleware SoutA_43: <br>
+              Node_name <br><br>
+              ? caches <br>
+              ? writes/ms <br>
+            </a>
+          </div>
         </div>
 
-        <div class="col-md-2 nopadding" ng-show="shared.currentCollection == 'caches'">
-          <a class="box" ui-sref="nodeDetails">
-            <span style="font-size:16px">Employee Data</span> <br>
-            <br>
-            3 caches <br>
-            35 writes/ms <br>
-          </a>
+        <div ng-show="shared.currentCollection == 'caches'">
+          <div ng-show="!currentCluster.caches || currentCluster.caches.length === 0">There are no caches to show.</div>
+          <div class="col-md-2 nopadding" ng-repeat="cache in currentCluster.caches">
+            <a class="box" ui-sref="cacheDetails">
+              <span style="font-size:16px">{{cache.name}}</span> <br>
+              <br>
+              ? nodes <br>
+              ? writes/ms <br>
+            </a>
+          </div>
         </div>
       </div>
       <!-- RIGHT COLUMN ROW #2 END -->

@@ -2,13 +2,15 @@
 
 angular.module('managementConsole.api')
   .factory('ClusterModel', [
-    function () {
+    'CacheModel',
+    function (CacheModel) {
       var Cluster = function(domain, name) {
         this.domain = domain;
         this.name = name;
         this.modelController = domain.getModelController();
         this.lastRefresh = null;
         this.data = null;
+        this.caches = undefined;
       };
 
       Cluster.prototype.getModelController = function() {
@@ -23,7 +25,9 @@ angular.module('managementConsole.api')
         this.modelController.readResource(this.getResourcePath(), false, false, (function(response) {
           this.lastRefresh = new Date();
           this.data = response;
-          callback(this);
+          if (callback) {
+            callback(this);
+          }
         }).bind(this));
       };
 
@@ -39,10 +43,11 @@ angular.module('managementConsole.api')
           if (typedCaches != undefined) {
             for(var name in typedCaches) {
               if (name != undefined)
-                caches.push(new Cache(this, name, cacheTypes[i]));
+                caches.push(new CacheModel(this, name, cacheTypes[i]));
             }
           }
         }
+        this.caches = caches;
         return caches;
       };
 

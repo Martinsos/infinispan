@@ -23,7 +23,9 @@ angular.module('managementConsole.api')
           this.name = response.name;
           this.data = response;
           this.lastRefresh = new Date();
-          callback(this);
+          if (callback) {
+            callback(this);
+          }
         }).bind(this));
       }
 
