@@ -2,7 +2,8 @@
 
 angular.module('managementConsole.api')
   .factory('DomainModel', [
-    function () {
+    'ClusterModel',
+    function (ClusterModel) {
       var Domain = function(modelController) {
         this.modelController = modelController;
         this.lastRefresh = null;
@@ -30,7 +31,7 @@ angular.module('managementConsole.api')
         var clusters = [];
         for(var name in this.data["cache-container"]) {
           if (name != undefined) {
-            clusters.push(new Cluster(this, name));
+            clusters.push(new ClusterModel(this, name));
           }
         }
         return clusters;

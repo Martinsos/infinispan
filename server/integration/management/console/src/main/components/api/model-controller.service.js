@@ -31,7 +31,7 @@ angular.module('managementConsole.api')
         http.setRequestHeader("Accept", "application/json");
         http.onreadystatechange = function() {
           if (http.readyState == 4 && http.status == 200) {
-            response = JSON.parse(http.responseText);
+            var response = JSON.parse(http.responseText);
             if (response.outcome == 'success') {
               callback(response.result);
             } else {

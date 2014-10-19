@@ -12,6 +12,7 @@ angular.module('managementConsole')
       api.getClusters(function(clusters) {
         $scope.$apply(function() {
           $scope.clusters = clusters;
+          console.log(clusters);
         });
       });
   }]);

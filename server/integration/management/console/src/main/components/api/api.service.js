@@ -9,7 +9,7 @@ angular.module('managementConsole.api')
     'DomainModel',
     function (ModelController, DomainModel) {
 
-      var dmrClient = new ModelController('http://localhost:9990/management', 'admin', '!qazxsw2');
+      var dmrClient = new ModelController('http://localhost:3000/management', 'admin', '!qazxsw2');
 
       var domain = new DomainModel(dmrClient);
 
