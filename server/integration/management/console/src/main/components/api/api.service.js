@@ -23,13 +23,19 @@ angular.module('managementConsole.api')
         });
       };
 
+      // Used as cache for getClustersDeep function.
+      var clustersDeep = undefined;
 
       /**
        * Fetches all clusters and all their data, including all nodes and caches.
+       * Fetched data is cached, so subsequent calls will return cached data.
        * @param callback([ClusterModel]) Callback whose first param is list of clusters.
+       * @param forceRefresh (boolean) If true cache is ignored and data is refreshed.
        */
-      var getClustersDeep = function(callback) {
-        var clusters = undefined;
+      var getClustersDeep = function(callback, forceRefresh) {
+        if (clustersDeep && !forceRefresh) {
+          callback(clustersDeep);
+        }
 
         var jobsInProgress = 0;
         var jobStarted = function() {
@@ -40,13 +46,13 @@ angular.module('managementConsole.api')
           if (jobsInProgress === 0) {
             // TODO(martinsos): Although it should not happen,
             // it is theoretically possible that callback will be called multiple times.
-            callback(clusters);
+            callback(clustersDeep);
           }
         };
 
         domain.refresh(function(domain) {
-          clusters = domain.getClusters();
-          angular.forEach(clusters, function(cluster) {
+          clustersDeep = domain.getClusters();
+          angular.forEach(clustersDeep, function(cluster) {
             jobStarted();
             cluster.refresh(function(cluster) {
               // Refresh caches.

@@ -40,7 +40,7 @@
       <h4 style="color:   #009A31;">Available</h4>
     </div>
     <div class="col-md-2 text-center">
-      <span class="bigger-font"> {{currentCluster.caches.length}} </span> <span class="smaller-font"> Caches</span>
+      <span class="bigger-font"> {{currentCluster.caches.length || '?'}} </span> <span class="smaller-font"> Caches</span>
     </div>
     <div class="col-md-3 text-center">
       <a class="bigger-font link-jobs">?</a> <span class="smaller-font"> complete map/reduce jobs</span>
@@ -111,7 +111,7 @@
         <div ng-show="shared.currentCollection == 'nodes'">
           <div ng-show="!currentCluster.nodes || currentCluster.nodes.length === 0">There are no nodes to show.</div>
           <div class="col-md-2 nopadding" ng-repeat="node in currentCluster.nodes">
-            <a class="box text-center" ui-sref="nodeDetails">
+            <a class="box text-center" ui-sref="nodeDetails({clusterName: currentCluster.name, nodeName: node.name})">
               Middleware SoutA_43: <br>
               Node_name <br><br>
               ? caches <br>
@@ -123,7 +123,7 @@
         <div ng-show="shared.currentCollection == 'caches'">
           <div ng-show="!currentCluster.caches || currentCluster.caches.length === 0">There are no caches to show.</div>
           <div class="col-md-2 nopadding" ng-repeat="cache in currentCluster.caches">
-            <a class="box" ui-sref="cacheDetails">
+            <a class="box" ui-sref="cacheDetails({clusterName: currentCluster.name, cacheName: cache.name})">
               <span style="font-size:16px">{{cache.name}}</span> <br>
               <br>
               ? nodes <br>
