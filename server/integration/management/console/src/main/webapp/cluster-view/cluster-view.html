@@ -95,10 +95,12 @@
         <div class="col-md-12" style="padding-top:20px; padding-bottom:20px;">
           <input type="search" class="search-field">
           <div style="float:left;">
-            <span style="font-size:18px;" class="glyphicon glyphicon-th-large header-links-container">
+            <span class="glyphicon glyphicon-th-large header-links-container"
+                  ng-class="{selected: shared.currentCollection == 'nodes'}">
               <a class="header-links" ng-click="shared.currentCollection = 'nodes'"> Nodes </a>
             </span>
-            <span style="font-size:18px;" class="glyphicon glyphicon-tasks header-links-container">
+            <span class="glyphicon glyphicon-tasks header-links-container"
+                  ng-class="{selected: shared.currentCollection == 'caches'}">
               <a class="header-links" ng-click="shared.currentCollection = 'caches'"> Caches </a>
             </span>
           </div>
