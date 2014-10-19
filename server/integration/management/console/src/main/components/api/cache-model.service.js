@@ -21,13 +21,13 @@ angular.module('managementConsole.api')
       };
 
       Cache.prototype.refresh = function(callback) {
-        this.modelController.readResource(this.getResourcePath(), false, true, (function(response) {
+        this.modelController.readResource(this.getResourcePath(), false, true, function(response) {
           this.data = response;
           this.lastRefresh = new Date();
           if (callback) {
             callback(this);
           }
-        }).bind(this));
+        }.bind(this));
       };
 
       return Cache;

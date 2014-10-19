@@ -24,7 +24,7 @@ angular.module('managementConsole.api')
       };
 
       // Used as cache for getClustersDeep function.
-      var clustersDeep = undefined;
+      var clustersDeep;
 
       /**
        * Fetches all clusters and all their data, including all nodes and caches.
