@@ -3,7 +3,7 @@
 angular.module('managementConsole', [
   'managementConsole.api',
   'ui.router',
-  'ui.bootstrap',
+  'patternfly-fixed'
 ])
 
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
@@ -48,3 +48,14 @@ angular.module('managementConsole', [
       });
     };
   }]);
+
+
+// In patternfly 0.0.2 there is a bug: unexisting module is included,
+// so we fix it here by manually grouping patternfly modules into one.
+angular.module('patternfly-fixed', [
+  'patternfly.autofocus',
+  'patternfly.form',
+  'patternfly.notification',
+  'patternfly.select',
+  'patternfly.validation',
+]);

@@ -12,7 +12,7 @@ gulp.task('wiredep', function () {
 
   gulp.src('src/main/*.html')
     .pipe(wiredep({
-      exclude: ['bower_components/bootstrap']
+      exclude: ['bower_components/angular-patternfly/dist/angular-patternfly.min.js']
     }))
     .pipe(gulp.dest('src/main'));
 });

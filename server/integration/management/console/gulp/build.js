@@ -67,7 +67,7 @@ gulp.task('html', ['clean', 'styles', 'scripts', 'partials'], function () {
     .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.replace('bower_components/bootstrap/fonts','fonts'))
+    .pipe($.replace('bower_components/patternfly/dist/fonts','fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -96,7 +96,7 @@ gulp.task('images', ['clean'], function () {
 });
 
 gulp.task('fonts', ['clean'], function () {
-  return gulp.src($.mainBowerFiles())
+  return gulp.src($.mainBowerFiles().concat('src/main/bower_components/patternfly/dist/fonts/**/*'))
     .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
     .pipe($.flatten())
     .pipe(gulp.dest('dist/fonts'))
